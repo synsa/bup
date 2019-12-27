@@ -93,7 +93,7 @@ def do_bloom(path, outfilename):
             debug1("bloom: size %d != idx total %d, regenerating\n"
                    % (len(b), rest_count))
             b = None
-        elif (b.bits < bloom.MAX_BLOOM_BITS and
+        elif (b.bits < bloom.MAX_BLOOM_BITS[b.k] and
               b.pfalse_positive(add_count) > bloom.MAX_PFALSE_POSITIVE):
             debug1("bloom: regenerating: adding %d entries gives "
                    "%.2f%% false positives.\n"
