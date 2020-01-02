@@ -41,13 +41,13 @@ savename()
 {
     readonly secs="$1"
     WVPASS bup-python -c "from time import strftime, localtime; \
-       print strftime('%Y-%m-%d-%H%M%S', localtime($secs))"
+       print(strftime('%Y-%m-%d-%H%M%S', localtime($secs)))"
 }
 
 WVPASS bup init
 WVPASS cd "$tmpdir"
 
-savestamp1=$(WVPASS bup-python -c 'import time; print int(time.time())') || exit $?
+savestamp1=$(WVPASS bup-python -c 'import time; print(int(time.time()))') || exit $?
 savestamp2=$(($savestamp1 + 1))
 
 savename1="$(savename "$savestamp1")" || exit $?
