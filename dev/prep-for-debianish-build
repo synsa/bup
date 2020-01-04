@@ -15,18 +15,22 @@ common_debs="$common_debs duplicity rdiff-backup rsnapshot"
 
 pyver="${1:-python2}"
 
+# dosfstools: for vfat for the (root) tests
+
 case "$pyver" in
     python2)
         apt-get install -y \
                 $common_debs \
                 python2.7-dev python-fuse \
-                python-pyxattr python-pylibacl python-tornado
+                python-pyxattr python-pylibacl python-tornado \
+                dosfstools
         ;;
     python3)
         apt-get install -y \
                 $common_debs \
                 python3.7-dev python3-distutils python3-fuse \
-                python3-pyxattr python3-pylibacl python3-tornado
+                python3-pyxattr python3-pylibacl python3-tornado \
+                dosfstools
         ;;
     *)
         usage 1>&2
